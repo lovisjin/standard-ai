@@ -1,0 +1,35 @@
+services:
+  backend:
+    build:
+      context: .          # 루트 빌드
+    container_name: logis-backend
+    command: >
+      uvicorn api.main:app
+      --host 0.0.0.0
+      --port 8000
+      --reload
+    volumes:
+      - ./:/app           # 루트 전체를 마운트 → live-reload 가능
+      - ./certs:/certs:ro
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env                     # OPENAI_API_KEY 등
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: logis-frontend
+    command: >
+      npm run dev -- --port 5173 --host --strictPort
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    environment:
+      - VITE_API_URL=https://${CODESPACE_NAME}-8000.app.github.dev
+    restart: unless-stopped
