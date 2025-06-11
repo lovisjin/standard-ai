@@ -6,6 +6,16 @@ from config.logger import logger
 
 load_dotenv()
 
+# ── SlackNotifier Stub ─────────────────────────────────────────────
+class SlackNotifier:
+    def __init__(self, *args, **kwargs):
+        pass
+
+    def send(self, *args, **kwargs):
+        pass
+# ─────────────────────────────────────────────────────────────────────
+
+
 def send_slack_notification(user_id: str, summary: str) -> None:
     """
     Slack 웹후크를 통해 요약 결과를 알림으로 전송합니다.
