@@ -148,3 +148,6 @@ class SheetWriter:
 
 # 전역 SheetWriter 인스턴스
 sheet_writer = SheetWriter()
+	Replace the single line
+sheet_writer = SheetWriter()
+with the block below
