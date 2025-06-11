@@ -41,3 +41,5 @@ def send_slack_notification(user_id: str, summary: str) -> None:
             logger.debug("Slack 알림 전송 완료")
     except Exception as e:
         logger.error(f"Slack 전송 중 예외 발생: {str(e)}")
+# SlackNotifier 인스턴스
+slack = SlackNotifier()
