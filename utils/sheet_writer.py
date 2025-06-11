@@ -17,7 +17,7 @@ class SheetWriter:
             
             # 서비스 계정 인증
             credentials = ServiceAccountCredentials.from_json_keyfile_name(
-                'google_credentials.json', 
+                os.getenv('GOOGLE_SERVICE_ACCOUNT_PATH'),  # 환경변수로 경로 지정!
                 scope
             )
             
