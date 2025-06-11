@@ -3,9 +3,8 @@ import openai
 import whisper
 from pathlib import Path
 import tempfile
-from ..core.base_skill import BaseSkill
-with
 from core.base_skill import BaseSkill
+
 
 class VoiceMemoSummarizer(BaseSkill):
     def __init__(self, prompt_engine):
