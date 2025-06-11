@@ -5,10 +5,18 @@ from config.logger import logger
 
 class Summarizer(BaseSkill):
     skill_name = "summarizer"
-    
-    def __init__(self):
-        super().__init__()
+
+    def __init__(self, *args, **kwargs):
+        """
+        Accept an optional prompt_engine arg, fall back to default PromptEngine.
+        """
+        super().__init__()  # BaseSkill 초기화
+        # 기본 엔진
         self.prompt_engine = PromptEngine()
+        # args[0]이 넘어왔다면 덮어쓰기
+        if args:
+            self.prompt_engine = args[0]
+
         
     async def validate_input(self, input_data: Dict[str, Any]) -> bool:
         """
