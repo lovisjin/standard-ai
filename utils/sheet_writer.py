@@ -147,7 +147,11 @@ class SheetWriter:
             raise
 
 # 전역 SheetWriter 인스턴스
-sheet_writer = SheetWriter()
-	Replace the single line
-sheet_writer = SheetWriter()
-with the block below
+sheet_writer = None
+try:
+    sheet_writer = SheetWriter()
+except Exception as e:
+    import logging
+    logging.getLogger(__name__).warning(
+        f"SheetWriter init failed (ignored): {e}"
+    )
